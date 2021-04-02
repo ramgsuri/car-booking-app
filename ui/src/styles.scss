@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; 
+    margin: 0; 
+    font-family: "Cambria";
+
+    background: url('./assets/images/car3.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.mat-divider {
+    margin-top: 16px;
+    margin-bottom: 26px;
+}

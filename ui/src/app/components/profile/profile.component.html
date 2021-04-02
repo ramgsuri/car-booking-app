@@ -1,0 +1,29 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title style="color: #3f51b5;">My Profile</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <p mat-line style="text-align: left"><strong>Name</strong></p>
+                <p mat-line> {{ profile.name }}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <p mat-line style="text-align: left"><strong>Email Address</strong></p>
+                <p mat-line>{{ profile.emailAddress }}</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <p mat-line style="text-align: left"><strong>Contact No.</strong></p>
+                <p mat-line> {{ profile.contactNo }} </p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <p mat-line style="text-align: left"><strong>Username</strong></p>
+                <p mat-line> {{ (userType==='customer'?profile.customerId:profile.dealerId) }} </p>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

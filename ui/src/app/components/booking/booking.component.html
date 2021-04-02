@@ -1,0 +1,80 @@
+<div class="dashboard-content">
+    <div *ngIf="dataSource && dataSource.data.length">
+    <mat-form-field class="search">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+    </mat-form-field>
+            
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>    
+        <!-- BRAND Column -->
+        <ng-container matColumnDef="bookingId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Booking ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.bookingId}}</td>
+            <td mat-footer-cell *matFooterCellDef> 
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Brand" />
+                </mat-form-field>
+            </td>
+        </ng-container>
+    
+        <!-- MODEL Column -->
+        <ng-container matColumnDef="carId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Car RegNo. </th>
+            <td mat-cell *matCellDef="let element"> {{element.carId}} </td>
+            <td mat-footer-cell *matFooterCellDef> 
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Model" />
+                </mat-form-field>
+            </td>
+        </ng-container>
+    
+        <!-- RegNO Column -->
+        <ng-container matColumnDef="customerId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer </th>
+            <td mat-cell *matCellDef="let element"> {{element.customerId}} </td>
+            <td mat-footer-cell *matFooterCellDef> 
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="RegNo" />
+                </mat-form-field>
+            </td>
+        </ng-container>
+    
+        <!-- PRICE Column -->
+        <ng-container matColumnDef="dealerId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Dealer </th>
+            <td mat-cell *matCellDef="let element"> {{element.dealerId}} </td>
+            <td mat-footer-cell *matFooterCellDef> 
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Price" />
+                </mat-form-field>
+            </td>
+        </ng-container>
+    
+        <!-- ACTIVE Column -->
+        <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Date</th>
+            <td mat-cell *matCellDef="let element"> {{element.startDate | date: 'MM/dd/yyyy'}} </td>
+            <td mat-footer-cell *matFooterCellDef> 
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Available" />
+                </mat-form-field>
+            </td>
+        </ng-container>
+    
+        <!-- LOCATION Column -->
+        <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> End Date </th>
+            <td mat-cell *matCellDef="let element"> {{element.endDate | date: 'MM/dd/yyyy'}} </td>
+            <td mat-footer-cell *matFooterCellDef> 
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Location" />
+                </mat-form-field>
+            </td>
+        </ng-container>   
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> 
+    </table>
+    <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="[1, 3, 5, 10]" showFirstLastButtons></mat-paginator>
+    </div>
+    <div *ngIf="dataSource && dataSource.data.length === 0">No bookins!</div>
+</div>

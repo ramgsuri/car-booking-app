@@ -1,0 +1,31 @@
+<h3 mat-dialog-title style="background-color: yellowgreen; color: #000; text-align: center;">BOOK NOW</h3>
+<div mat-dialog-content>
+    <form class="full-width">
+        <mat-form-field class="full-width" style="display: none;">
+            <input matInput placeholder="Booking ID" [(ngModel)]="data.bookingId" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Car RegNo" [(ngModel)]="data.carId" [ngModelOptions]="{standalone: true}" disabled>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Customer" [(ngModel)]="data.customerId" [ngModelOptions]="{standalone: true}" disabled>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Dealer" [(ngModel)]="data.dealerId" [ngModelOptions]="{standalone: true}" disabled>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput [matDatepicker]="picker1" [min]="today" placeholder="From Date" [(ngModel)]="data.startDate" [ngModelOptions]="{standalone: true}" (dateChange)="dateChanged()">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1 startView="month" [startAt]="data.startDate"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput [matDatepicker]="picker2" [min]="data.startDate" placeholder="To Date" [(ngModel)]="data.endDate" [ngModelOptions]="{standalone: true}">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2 startView="month" [startAt]="data.startDate"></mat-datepicker>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" (click)="onCancel()">CANCEL</button>
+  <button mat-raised-button color="primary" (click)="onSave()">CONFIRM BOOKING</button>
+</div>

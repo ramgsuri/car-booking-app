@@ -1,0 +1,36 @@
+.content {
+    padding: 0 16px;
+}
+
+.mat-drawer {
+    width: 200px;
+    min-width: 200px;
+    padding: 16px;
+}
+.mat-drawer-container {
+    position: fixed;
+    height: 89%;
+    min-height: 89%;
+    width: 100%;
+    min-width: 100%;
+    background-color: transparent;
+ }
+
+ a {
+    color: #3f51b5;
+    text-decoration: none;
+}
+
+a:hover {
+    font-weight: bold;
+}
+ .active {
+     background-color: lightgray;
+ }
+
+ .active a {
+     font-weight: bold;
+ }
+
+
+

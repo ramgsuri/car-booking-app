@@ -1,0 +1,43 @@
+<div class="login-box">
+    <mat-card style="text-align: center;">
+        <mat-card-header> 
+            <mat-card-title>Sign In</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <form class="full-width">
+                <!-- <mat-radio-group [formControl]="userTypeFormControl">
+                    <mat-radio-button value="customer" checked>Customer</mat-radio-button>
+                    <mat-radio-button value="dealer">Dealer</mat-radio-button>
+                </mat-radio-group>
+
+                <mat-divider></mat-divider>
+                <br>
+                <br> -->
+                
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Username" [formControl]="usernameFormControl" [errorStateMatcher]="matcher">
+                    <!-- <mat-hint>Enter username</mat-hint> -->
+                    <!-- <mat-error *ngIf="usernameFormControl.hasError('email') && !usernameFormControl.hasError('required')">
+                        Please enter a valid username
+                    </mat-error> -->
+                    <mat-error *ngIf="usernameFormControl.hasError('required')">
+                        Username is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                
+                <mat-form-field class="full-width">
+                    <input type="password" matInput placeholder="Password" [formControl]="passwordFormControl" [errorStateMatcher]="matcher">
+                    <!-- <mat-hint>Enter password</mat-hint> -->
+                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-card-actions [align]="'end'">
+                    <button mat-button color="primary" (click)="newUser()">New User?</button>
+                    <button mat-raised-button color="primary" style="margin-right: 8px;" (click)="login()">SIGN IN</button>
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

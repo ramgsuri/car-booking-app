@@ -1,0 +1,55 @@
+<div class="login-box">
+        <mat-card style="text-align: center;">
+            <mat-card-header> 
+                <mat-card-title>Register</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <form class="full-width">
+                    <mat-radio-group [formControl]="userTypeFormControl">
+                        <mat-radio-button value="customer" checked>Customer</mat-radio-button>
+                        <mat-radio-button value="dealer">Dealer</mat-radio-button>
+                    </mat-radio-group>
+                    <mat-divider></mat-divider>
+                    <br>
+                    <br>
+        
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Name" [formControl]="nameFormControl" [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="nameFormControl.hasError('required')">
+                            Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Contact Number" [formControl]="contactFormControl" [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="contactFormControl.hasError('required')">
+                            Contact is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Email Address" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                            Contact is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Username" [formControl]="usernameFormControl" [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="usernameFormControl.hasError('required')">
+                            Username is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    
+                    <mat-form-field class="full-width">
+                        <input type="password" matInput placeholder="Password" [formControl]="passwordFormControl" [errorStateMatcher]="matcher">
+                        <mat-error *ngIf="passwordFormControl.hasError('required')">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+    
+                    <mat-card-actions [align]="'end'">
+                        <button mat-button color="primary" (click)="login()">Already registered!</button>
+                        <button mat-raised-button color="primary" style="margin-right: 8px;" (click)="register()">REGISTER</button>
+                    </mat-card-actions>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>

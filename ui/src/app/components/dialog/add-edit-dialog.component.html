@@ -1,0 +1,33 @@
+<h3 mat-dialog-title style="background-color: yellowgreen; color: #000; text-align: center;">{{data.isEdit?'EDIT':'ADD NEW'}} CAR</h3>
+<div mat-dialog-content>
+    <form class="full-width">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Brand" [(ngModel)]="data.brand" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Model" [(ngModel)]="data.model" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Reg. No." [(ngModel)]="data.registrationNo" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Price ($)" [(ngModel)]="data.price" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Location</mat-label>
+            <mat-select [(ngModel)]="data.locationId" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let option of locationOptions" [value]="option.value">{{ option.label }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+            <mat-label>Active</mat-label>
+            <mat-select [(ngModel)]="data.availability" [ngModelOptions]="{standalone: true}">
+                <mat-option *ngFor="let option of activeOptions" [value]="option.value">{{ option.label }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="warn" (click)="onCancel()">CANCEL</button>
+  <button mat-raised-button color="primary" (click)="onSave()">SAVE</button>
+</div>

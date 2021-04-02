@@ -1,0 +1,118 @@
+<div class="dashboard-content">
+<div *ngIf="isAdding || dataSource && dataSource.data.length">
+<mat-form-field class="search">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+</mat-form-field>
+      
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>    
+    <!-- BRAND Column -->
+    <ng-container matColumnDef="brand">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Brand </th>
+        <td mat-cell *matCellDef="let element"> {{element.brand}}</td>
+        <td mat-footer-cell *matFooterCellDef> 
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Brand" />
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <!-- MODEL Column -->
+    <ng-container matColumnDef="model">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Model </th>
+        <td mat-cell *matCellDef="let element"> {{element.model}} </td>
+        <td mat-footer-cell *matFooterCellDef> 
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Model" />
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <!-- RegNO Column -->
+    <ng-container matColumnDef="registrationNo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Reg No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.registrationNo}} </td>
+        <td mat-footer-cell *matFooterCellDef> 
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="RegNo" />
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <!-- PRICE Column -->
+    <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Price / Day </th>
+        <td mat-cell *matCellDef="let element"> {{element.price | currency: 'USD':'$'}} </td>
+        <td mat-footer-cell *matFooterCellDef> 
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Price" />
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <!-- ACTIVE Column -->
+    <ng-container matColumnDef="availability">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Is Available </th>
+        <td mat-cell *matCellDef="let element"> {{ (element.availability?'YES':'NO') }} </td>
+        <td mat-footer-cell *matFooterCellDef> 
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Available" />
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <!-- LOCATION Column -->
+    <ng-container matColumnDef="locationId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Location </th>
+        <td mat-cell *matCellDef="let element"> {{ locations[element.locationId] }} </td>
+        <td mat-footer-cell *matFooterCellDef> 
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Location" />
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+    <!-- DEALER Column -->
+    <ng-container matColumnDef="dealerId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Dealer </th>
+        <td mat-cell *matCellDef="let element"> {{element.dealerId}} </td>
+        <td mat-footer-cell *matFooterCellDef> 
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Dealer" />
+            </mat-form-field>
+        </td>
+    </ng-container>
+
+     <!-- ACTION Column -->
+     <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> ACTION </th>
+        <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="warn" (click)="onDelete(row)" aria-label="Example icon-button with a heart icon" *ngIf="userType=='dealer'">
+                <mat-icon>cancel</mat-icon>
+            </button>
+            
+            <button mat-icon-button style="color: yellowgreen;" (click)="editRow(row)" aria-label="Example icon-button with a heart icon" *ngIf="userType=='dealer'">
+                <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-raised-button style="background-color: yellowgreen;" aria-label="Example icon-button with a heart icon" *ngIf="userType=='customer'" (click)="booknow(row)"> 
+                Book Now
+            </button>
+        </td>
+        <td mat-footer-cell *matFooterCellDef> <mat-icon color="accent"></mat-icon> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr> -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> 
+    <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true" [hidden]="(!isAdding || isSelected)"></tr>
+</table>
+<mat-paginator [pageSize]="pageSize" [pageSizeOptions]="[1, 3, 5, 10]" showFirstLastButtons></mat-paginator>
+</div>
+<div *ngIf="!isAdding && dataSource && dataSource.data.length === 0">No cars!</div>
+
+<div style="z-index:5; position: fixed; display: flex; flex: 1 1 auto; align-self: flex-end; bottom: 2%; margin-bottom: 68px;" *ngIf="userType=='dealer'">
+    <div mat-dialog-actions [align]="'end'"> 
+        <button *ngIf="!isAdding && !isSelected" mat-fab color="accent" style="margin-right: 16px;" (click)="addNewCar()" matTooltip="ADD NEW"><mat-icon>add</mat-icon></button>
+    </div>
+</div>
+</div>

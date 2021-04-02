@@ -1,0 +1,10 @@
+<h3 mat-dialog-title style="background-color: yellowgreen; color: #000; text-align: center;">Delete Car</h3>
+<div mat-dialog-content>
+  <p style="color: red;">Are you sure, you want to delete?</p>
+  <p>{{data.brand | uppercase}} - {{data.model | uppercase}} - {{data.registrationNo}}</p>
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="primary" (click)="onNoClick()">No</button>
+  <button mat-raised-button color="warn" (click)="onYesClick()">Yes</button>
+</div>

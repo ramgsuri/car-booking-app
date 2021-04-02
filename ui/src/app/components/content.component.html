@@ -1,0 +1,28 @@
+<div class="backImage">
+    <mat-drawer-container>
+        <mat-drawer [opened]="opened" mode="side">
+            <mat-list>
+                <mat-list-item [routerLinkActive]="['active']">
+                    <mat-icon color="primary" mat-list-icon>directions_car</mat-icon>
+                    <p mat-line><a routerLink="/dashboard"> Cars </a></p>
+                </mat-list-item>
+                <!-- <mat-divider></mat-divider> -->
+                <mat-list-item  [routerLinkActive]="['active']">
+                    <mat-icon color="primary" mat-list-icon>add_shopping_cart</mat-icon>
+                    <p mat-line><a routerLink="/booking"> Bookings </a></p>
+                </mat-list-item>
+                <!-- <mat-divider></mat-divider> -->
+                <mat-list-item [routerLinkActive]="['active']">
+                    <mat-icon color="primary" mat-list-icon>account_box</mat-icon>
+                    <p mat-line><a routerLink="/profile"> My Profile </a></p>
+                </mat-list-item>
+            </mat-list>
+        </mat-drawer>
+        <mat-drawer-content>
+            <div class="content">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>
+
